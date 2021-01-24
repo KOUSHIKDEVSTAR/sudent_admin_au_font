@@ -16,6 +16,7 @@ import { showToast } from "../../config/toastr/toast";
 import logodark from "../../assets/images/logo-dark.png";
 import { BASE_URL } from '../../config/static';
 import Axios from 'axios';
+import { setDataToLocalStorage } from '../../config/localStorage/localStorageHelperMethords';
 
 class Login extends Component {
 
@@ -23,39 +24,37 @@ class Login extends Component {
         super(props);
         this.state = {  username : "", password : "" }
         this.handleSubmit = this.handleSubmit.bind(this);
+        
     }
 
     handleSubmit(event, values) {
-        console.log(values);
+       
 
         Axios.post(`${BASE_URL}users/login`, {
             email: values.email,
             password:values.password,
-            
-    
-            
         })
         .then(response => {
     
-            console.log(response);
+            
             // 400=Incorrect Email and/or Password!
-            if(response.data===200){
+            if(response.data.code===200){
                 showToast('Success', 'Login Success'); 
-                this.props.history.replace('/dashboard');
-                
-                
+                setDataToLocalStorage('logUserEmail',response.data.email)
+                setDataToLocalStorage('logUserId',response.data.id)
+                setDataToLocalStorage('logUserToken',response.data.token) 
+                setDataToLocalStorage('logUserRole',response.data.permissions)
+                this.props.history.replace('/dashboard');   
             }else{ 
                 showToast('Error', 'Incorrect Email and/or Password!'); 
                 this.props.history.replace('/login');
             }
-            
         })
         .catch(error =>{
             console.log(error)
         })
         // this.props.checkLogin(values, this.props.history);
     }
-
     componentDidMount(){
         this.props.apiError("");
         document.body.classList.add("auth-body-bg");

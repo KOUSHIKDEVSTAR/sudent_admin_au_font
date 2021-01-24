@@ -44,6 +44,7 @@ import dribbble from "../../assets/images/brands/dribbble.png";
 import dropbox from "../../assets/images/brands/dropbox.png";
 import mail_chimp from "../../assets/images/brands/mail_chimp.png";
 import slack from "../../assets/images/brands/slack.png";
+import { getDataFromLocalStorage } from "../../config/localStorage/localStorageHelperMethords";
 
 class Header extends Component {
   constructor(props) {
@@ -55,6 +56,7 @@ class Header extends Component {
     this.toggleMenu = this.toggleMenu.bind(this);
     this.toggleRightbar = this.toggleRightbar.bind(this);
     this.toggleFullscreen = this.toggleFullscreen.bind(this);
+    
   }
   /**
    * Toggle sidebar
@@ -98,6 +100,7 @@ class Header extends Component {
       }
     }
   }
+  
 
   render() {
     return (

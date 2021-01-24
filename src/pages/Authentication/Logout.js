@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { logoutUser } from '../../store/actions';
+import { removeAllUserAuthData } from '../../config/localStorage/localStorageHelperMethords';
 
 class Logout extends Component {
 
@@ -15,8 +16,9 @@ class Logout extends Component {
      
         // Fire Action for Remove all Item from localstorage and redirect to login page
         this.props.logoutUser(this.props.history);
+        removeAllUserAuthData();
     }
-
+    
     render() {
         return (
             <React.Fragment>

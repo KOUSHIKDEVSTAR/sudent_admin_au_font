@@ -41,7 +41,9 @@ handleSubmit(event, values) {
         password:values.password,
         first_name:values.first_name,
         last_name:values.last_name,
-        mobile:values.mobile
+        mobile:values.mobile,
+        role:values.role
+        
 
         
     })
@@ -123,7 +125,8 @@ handleSubmit(event, values) {
                                                     <FormGroup className="auth-form-group-custom mb-4">
                                                         <i className="ri-phone-line auti-custom-input-icon"></i>
                                                         <Label htmlFor="mobile">Phone</Label>
-                                                        <AvField name="mobile"  value={this.state.email} validate={{required: true}} type="number" className="form-control" id="mobile" placeholder="Enter email"/>
+                                                        <AvField name="mobile"  value={this.state.mobile} validate={{required: true}} type="number" className="form-control" id="mobile" placeholder="Enter Phone" />
+                                                        <AvField name="role"  value="2" validate={{required: true}} type="hidden" className="form-control" id="mobile" placeholder="Enter email"/>
                                                     </FormGroup>
                             
                                                     <FormGroup className="auth-form-group-custom mb-4">
