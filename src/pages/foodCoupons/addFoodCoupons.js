@@ -46,7 +46,7 @@ const AddFoodCoupousPage = (props)=> {
 
      // form submit
      const handleSubmit = async (event, values)=> {
-        // console.log(values);
+        console.log(values);
         var post_slug= slugify(values.post_title);
         Axios.post(`${BASE_URL}food-coupons/addFoodCoupons`, {
             coupon_price: values.coupon_price,
