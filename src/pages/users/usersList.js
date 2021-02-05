@@ -7,10 +7,13 @@ import "../../datatables.scss";
 //Import Breadcrumb
 import Breadcrumbs from '../../components/Common/Breadcrumb';
 import SweetAlertConfirm from '../../config/sweet-alert/sweet-alert';
+import SweetAlertConfirmStatus from '../../config/sweet-alert/sweet-alert-status';
+
 import Axios from 'axios';
 import { BASE_URL, SITE_NAME } from '../../config/static';
 import { showToast } from '../../config/toastr/toast';
 import { checkUserAuthenticity } from '../../helpers/checkUserAuthenticity/checkAuthenticity';
+
 
 
   
@@ -21,6 +24,13 @@ const UserListPage = (props)=> {
 
     let history = useHistory();
     const [columns, setColumns] = useState([
+      
+      {
+        label: "Sl No.",
+        field: "sl_no",
+        sort: "asc",
+        width: 200
+      },
       {
         label: "First name",
         field: "first_name",
@@ -46,7 +56,7 @@ const UserListPage = (props)=> {
         width: 100
       },
       {
-        label: "Address",
+        label: "Username",
         field: "address",
         sort: "asc",
         width: 100
@@ -56,12 +66,20 @@ const UserListPage = (props)=> {
         field: "action",
         sort: "asc",
         width: 100
+      },
+      {
+        label: "Status",
+        field: "status",
+        sort: "asc",
+        width: 100
       }
     ]);
     const [rows, setRows] = useState([]);
     // const [allUser, setAllUser] = useState([]);
     const [showConfirmDelete, setshowConfirmDelete] = useState(false);
+    const [showConfirmStatus, setshowConfirmStatus] = useState(false);
     const deleteID = useRef(null);
+    const statusID = useRef(null);
 
     const [breadcrumbItems, setbreadcrumbItems] = useState([
         { title : SITE_NAME, link : "#" },
@@ -93,8 +111,6 @@ const UserListPage = (props)=> {
       // props.history.push({pathname: '/edit-User', data: {id}});
       setshowConfirmDelete(true);
   }
-
-
   const onConfirmAction = ()=> {
     setshowConfirmDelete(false);
     deleteUser(deleteID.current);
@@ -103,9 +119,33 @@ const UserListPage = (props)=> {
   const onCancelAction = ()=> {
     setshowConfirmDelete(false);
   }
+
+  const onClickStatus = (id)=> {
+     
+    statusID.current = id;
+    setshowConfirmStatus(true);
+  }
+  const onConfirmActionStatus = ()=> {
+    setshowConfirmStatus(false);
+    statusUser(statusID.current);
+  }
+
+  const onCancelActionStatus = ()=> {
+    setshowConfirmStatus(false);
+  }
+
+
+  
   
   const action = (key, id)=>{return [<i className="fa fa-edit" key={key} onClick={()=>{onClickEdit(id)}} style={{fontSize: 18}}></i>, '     ', '     ', <i className="fa fa-trash" key={key+key} style={{fontSize: 18}} onClick={()=> {onClickRemove(id)}}></i>]};
 
+  const status = (key, id)=>{
+    if(id.status == '1'){
+      return [<i className=" fas fa-check-circle" key={key} onClick={()=>{onClickStatus(id)}} style={{fontSize: 18}}></i>]
+    }else if(id.status == '0'){
+      return [<i className="  fas fa-chess-queen" key={key} onClick={()=>{onClickStatus(id)}} style={{fontSize: 18}}></i>]
+    }    
+  };
     // getting all User
     const getAllUsers = async () => {
 
@@ -116,13 +156,15 @@ const UserListPage = (props)=> {
         }).then(response => {
             
             let users = response.data.data;
-            let rows = users.map(item => {return {
-                first_name: item.first_name,
-                last_name: item.last_name,
+            let rows = users.map((item, index) => {return {
+              sl_no: index+1,
+                first_name: item.fname,
+                last_name: item.lname,
                 email: item.email,
-                mobile: item.mobile,
-                address: item.address,
-                action: action(item.id, item)
+                mobile: item.phone,
+                address: item.username,
+                action: action(item.id, item),
+                status: status(item.id, item)
             }});
             setRows(rows);
             //this.setState({userFname:response.data.data[0].first_name })
@@ -160,7 +202,26 @@ const UserListPage = (props)=> {
 
 }
    
+const statusUser = async (id) => {
+    
+  Axios.post(`${BASE_URL}users/userStatus`, {
+    id: id
+}).then(response => {
+  if(response.data.code==200){
+    showToast('Success', 'Delete Success'); 
+    this.props.history.replace('/userList');
 
+    
+}else{
+  showToast('Warning', 'User already registered'); 
+  this.props.history.replace('/userList');
+}
+  
+}).catch(err =>{
+    console.log(err);
+})
+
+}
     return (
             <React.Fragment>
                 <div className="page-content">
@@ -179,7 +240,7 @@ const UserListPage = (props)=> {
                     </Row>
 
                     { showConfirmDelete ? <SweetAlertConfirm onConfirmAction={onConfirmAction} onCancelAction={onCancelAction}/> : null }
-
+                    { showConfirmStatus ? <SweetAlertConfirmStatus onConfirmActionStatus={onConfirmActionStatus} onCancelAction={onCancelActionStatus}/> : null }
                     </Container> 
                 </div>
             </React.Fragment>

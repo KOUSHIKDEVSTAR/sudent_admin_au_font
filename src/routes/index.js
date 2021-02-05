@@ -22,6 +22,13 @@ import foodCouponsList from "../pages/foodCoupons/foodCouponsList";
 import addFoodCoupons from "../pages/foodCoupons/addFoodCoupons";
 import addJobPost from "../pages/jobPost/addJobPost";
 import jobPostList from "../pages/jobPost/jobPostList";
+import categoryList from "../pages/category/categoryList";
+import addCategory from "../pages/category/addCategory";
+import accomodationList from "../pages/accomodation/accomodationList";
+import addAccomodation from "../pages/accomodation/addAccomodation";
+import jobCategoryList from "../pages/jobCategory/jobCategoryList";
+import editJobCategory from "../pages/jobCategory/editJobCategory";
+import editCategory from "../pages/category/editCategory";
 
 
 
@@ -43,6 +50,15 @@ const authProtectedRoutes = [
 
 	{ path: "/addJobPost", component: addJobPost },
 	{ path: "/jobPostList", component: jobPostList },
+	{ path: "/jobCategoryList", component: jobCategoryList },
+	{ path: "/jobCategoryEdit", component: editJobCategory },
+
+	{ path: "/categoryList", component: categoryList },
+	{ path: "/editCategory", component: editCategory },
+	{ path: "/addCategory", component: addCategory },
+	
+	{ path: "/accomodationList", component: accomodationList },
+	{ path: "/addAccomodation", component: addAccomodation },
 	
 	// this route should be at the end of all other routes
 	{ path: "/", exact: true, component: () => <Redirect to="/login" /> }

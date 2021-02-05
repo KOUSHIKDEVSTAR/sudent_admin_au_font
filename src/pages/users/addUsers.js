@@ -139,26 +139,13 @@ class ProfieAddPage extends Component {
                                                         
                                                     </FormGroup>
                             
-                                                    <FormGroup className="auth-form-group-custom mb-4">
+                                                    {/* <FormGroup className="auth-form-group-custom mb-4">
                                                         <i className="ri-lock-2-line auti-custom-input-icon"></i>
                                                         <Label htmlFor="useraddress">Address</Label>
                                                         <AvField name="address"  value="" validate={{required: true}} type="textarea" row="3" className="form-control" id="" placeholder="Enter address"/>
                                                         <AvField name="role"  value="2" validate={{required: true}} type="hidden" className="form-control" id="mobile" placeholder="Enter email"/>
-                                                        {/* <Input
-												type="textarea"
-												id="textarea"
-												onChange={this.textareachange}
-												maxLength="225"
-												rows="3"
-												placeholder="Address"
-											/>
-											{this.state.textareabadge ? (
-												<span className="badgecount badge badge-info">
-													{" "}
-													{this.state.textcount} / 225{" "}
-												</span>
-											) : null} */}
-                                                    </FormGroup>
+                                                      
+                                                    </FormGroup> */}
                                                     
 
                                                     <div className="text-left">

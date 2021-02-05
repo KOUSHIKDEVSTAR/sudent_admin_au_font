@@ -13,23 +13,29 @@ import { showToast } from '../../config/toastr/toast';
 import { checkUserAuthenticity } from '../../helpers/checkUserAuthenticity/checkAuthenticity';
 
 
-const JobPostPage = (props)=> {                                                                                                                    
+const JobPostPage = (props)=> {
 
     let history = useHistory();
     const [columns, setColumns] = useState([
       {
-        label: "Coupons title",
+        label: "Sl No.",
+        field: "sl_no",
+        sort: "asc",
+        width: 200
+      },
+      {
+        label: "Title",
         field: "job_post_title",
         sort: "asc",
         width: 150
       },
       {
-        label: "Coupons content",
+        label: "Job content",
         field: "job_post_content",
         sort: "asc",
         width: 200
       },
-      
+
       {
         label: "Status",
         field: "status",
@@ -54,7 +60,7 @@ const JobPostPage = (props)=> {
     ])
 
     useEffect(()=>{
-        checkUserAuthenticity().then(data =>{            
+        checkUserAuthenticity().then(data =>{
             if(!data){
                 history.replace('/login');
             }
@@ -65,13 +71,13 @@ const JobPostPage = (props)=> {
         getAllUsers();
     }, []);
 
-    
+
 
     const onClickEdit = (id)=> {
       console.log('EDIT', id);
       props.history.push({pathname: '/#', data: id});
   }
-  
+
   const onClickRemove = (id)=> {
       console.log('REMOVE', id.job_post_id  );
       deleteID.current = id;
@@ -88,25 +94,26 @@ const JobPostPage = (props)=> {
   const onCancelAction = ()=> {
     setshowConfirmDelete(false);
   }
-  
+
   const action = (key, job_post_id  )=>{return [<i className="fa fa-edit" key={key} onClick={()=>{onClickEdit(job_post_id  )}} style={{fontSize: 18}}></i>, '     ', '     ', <i className="fa fa-trash" key={key+key} style={{fontSize: 18}} onClick={()=> {onClickRemove(job_post_id  )}}></i>]};
 
     // getting all User
     const getAllUsers = async () => {
 
-      try {          
-          
+      try {
+
         Axios.get(`${BASE_URL}job-post/all-job-post`, {
-            
+
         }).then(response => {
-            console.log(response);
+
             let users = response.data.data;
-            let rows = users.map(item => {return {
+            let rows = users.map((item, index)=> {return {
+              sl_no: index+1,
               job_post_title: item.job_post_title,
               job_post_content: item.job_post_content,
-                
+
                 status: item.status,
-               
+
                 action: action(item.job_post_id  , item)
             }});
             setRows(rows);
@@ -124,27 +131,27 @@ const JobPostPage = (props)=> {
 
 
   const deleteUser = async (id) => {
-    
+
   //   Axios.post(`${BASE_URL}users/userdelete`, {
   //     id: id
   // }).then(response => {
   //   if(response.data.code==200){
-  //     showToast('Success', 'Delete Success'); 
+  //     showToast('Success', 'Delete Success');
   //     this.props.history.replace('/userList');
 
-      
+
   // }else{
-  //   showToast('Warning', 'User already registered'); 
+  //   showToast('Warning', 'User already registered');
   //   this.props.history.replace('/userList');
   // }
-      
-      
+
+
   // }).catch(err =>{
   //     console.log(err);
   // })
 
 }
-   
+
 
     return (
             <React.Fragment>
@@ -165,7 +172,7 @@ const JobPostPage = (props)=> {
 
                     { showConfirmDelete ? <SweetAlertConfirm onConfirmAction={onConfirmAction} onCancelAction={onCancelAction}/> : null }
 
-                    </Container> 
+                    </Container>
                 </div>
             </React.Fragment>
         )
@@ -173,4 +180,3 @@ const JobPostPage = (props)=> {
 
 
 export default withRouter(JobPostPage);
-            

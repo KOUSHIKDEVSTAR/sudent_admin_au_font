@@ -17,10 +17,11 @@ import { checkUserAuthenticity } from '../../helpers/checkUserAuthenticity/check
 
 
 
-const FoodCoupousPage = (props)=> {                                                                                                                    
+const AccomodationPage = (props)=> {                                                                                                                    
 
     let history = useHistory();
     const [columns, setColumns] = useState([
+      
       {
         label: "Sl No.",
         field: "sl_no",
@@ -28,35 +29,42 @@ const FoodCoupousPage = (props)=> {
         width: 200
       },
       {
-        label: "Coupons title",
+        label: "Title",
         field: "post_title",
         sort: "asc",
         width: 150
       },
       {
-        label: "Coupons content",
-        field: "post_content",
+        label: "Property Short Description",
+        field: "post_short_content",
         sort: "asc",
-        width: 200
+        width: 150
       },
       {
-        label: "coupon_price",
-        field: "coupon_price",
+        label: "Address",
+        field: "address",
         sort: "asc",
-        width: 200
+        width: 150
       },
       {
-        label: "Quantity",
-        field: "quantity",
+        label: "Accomodation type",
+        field: "accomodation_type",
+        sort: "asc",
+        width: 150
+      },
+      {
+        label: "Accomodation type",
+        field: "accomodation_price",
+        sort: "asc",
+        width: 150
+      },
+    
+      {
+        label: "Action",
+        field: "action",
         sort: "asc",
         width: 100
-      },
-      // {
-      //   label: "Action",
-      //   field: "action",
-      //   sort: "asc",
-      //   width: 100
-      // }
+      }
     ]);
     const [rows, setRows] = useState([]);
     // const [allUser, setAllUser] = useState([]);
@@ -65,7 +73,7 @@ const FoodCoupousPage = (props)=> {
 
     const [breadcrumbItems, setbreadcrumbItems] = useState([
         { title : SITE_NAME, link : "#" },
-        { title : "Food List", link : "#" },
+        { title : "Accomodation List", link : "#" },
     ])
 
     useEffect(()=>{
@@ -111,7 +119,7 @@ const FoodCoupousPage = (props)=> {
 
       try {          
           
-        Axios.get(`${BASE_URL}food-coupons/all-food-coupons`, {
+        Axios.get(`${BASE_URL}accomodation/all-accomodation`, {
             
         }).then(response => {
             
@@ -119,11 +127,12 @@ const FoodCoupousPage = (props)=> {
             let rows = users.map((item, index) => {return {
               sl_no: index+1,
               post_title: item.title,
-              post_content: item.description ,
-              coupon_price: item.price,
-                quantity: item.quantity,
-               
-                action: action(item.id , item)
+              post_short_content: item.post_short_content,
+              address: item.address,
+              accomodation_type: item.accomodation_type,
+              accomodation_price: item.accomodation_price,
+
+              //   action: action(item.id , item)
             }});
             setRows(rows);
             //this.setState({userFname:response.data.data[0].first_name })
@@ -167,7 +176,7 @@ const FoodCoupousPage = (props)=> {
                 <div className="page-content">
                     <Container fluid>
 
-                    <Breadcrumbs title="Food List" breadcrumbItems={breadcrumbItems}/>
+                    <Breadcrumbs title="accomodation List" breadcrumbItems={breadcrumbItems}/>
 
                     <Row>
                         <Col xs={12}>
@@ -188,5 +197,5 @@ const FoodCoupousPage = (props)=> {
 }
 
 
-export default withRouter(FoodCoupousPage);
+export default withRouter(AccomodationPage);
             

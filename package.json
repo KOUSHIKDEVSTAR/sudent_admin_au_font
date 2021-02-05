@@ -37,6 +37,7 @@
     "react-router-dom": "^5.1.2",
     "react-script": "^2.0.5",
     "react-scripts": "3.4.1",
+    "react-select": "^4.0.2",
     "react-slugify": "^2.0.3",
     "react-sparklines": "^1.7.0",
     "reactstrap": "^8.4.1",

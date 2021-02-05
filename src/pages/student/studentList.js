@@ -27,6 +27,12 @@ const StudentListPage = (props)=> {
     let history = useHistory();
     const [columns, setColumns] = useState([
       {
+        label: "Sl No.",
+        field: "sl_no",
+        sort: "asc",
+        width: 200
+      },
+      {
         label: "First name",
         field: "first_name",
         sort: "asc",
@@ -121,13 +127,15 @@ const StudentListPage = (props)=> {
         }).then(response => {
             
             let users = response.data.data;
-            let rows = users.map(item => {return {
-                first_name: item.first_name,
-                last_name: item.last_name,
-                email: item.email,
-                mobile: item.mobile,
-                address: item.address,
-                action: action(item.id, item)
+            let rows = users.map((item, index) => {return {
+              
+              sl_no: index+1,
+              first_name: item.fname,
+              last_name: item.lname,
+              email: item.email,
+              mobile: item.phone,
+              address: item.username,
+              action: action(item.id, item)
             }});
             setRows(rows);
             //this.setState({userFname:response.data.data[0].first_name })

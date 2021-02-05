@@ -17,10 +17,11 @@ import { checkUserAuthenticity } from '../../helpers/checkUserAuthenticity/check
 
 
 
-const FoodCoupousPage = (props)=> {                                                                                                                    
+const JobCategoryPage = (props)=> {                                                                                                                    
 
     let history = useHistory();
     const [columns, setColumns] = useState([
+      
       {
         label: "Sl No.",
         field: "sl_no",
@@ -28,35 +29,18 @@ const FoodCoupousPage = (props)=> {
         width: 200
       },
       {
-        label: "Coupons title",
+        label: "Job Category title",
         field: "post_title",
         sort: "asc",
         width: 150
       },
+    
       {
-        label: "Coupons content",
-        field: "post_content",
-        sort: "asc",
-        width: 200
-      },
-      {
-        label: "coupon_price",
-        field: "coupon_price",
-        sort: "asc",
-        width: 200
-      },
-      {
-        label: "Quantity",
-        field: "quantity",
+        label: "Action",
+        field: "action",
         sort: "asc",
         width: 100
-      },
-      // {
-      //   label: "Action",
-      //   field: "action",
-      //   sort: "asc",
-      //   width: 100
-      // }
+      }
     ]);
     const [rows, setRows] = useState([]);
     // const [allUser, setAllUser] = useState([]);
@@ -65,7 +49,7 @@ const FoodCoupousPage = (props)=> {
 
     const [breadcrumbItems, setbreadcrumbItems] = useState([
         { title : SITE_NAME, link : "#" },
-        { title : "Food List", link : "#" },
+        { title : "Student List", link : "#" },
     ])
 
     useEffect(()=>{
@@ -83,14 +67,13 @@ const FoodCoupousPage = (props)=> {
     
 
     const onClickEdit = (id)=> {
-      console.log('EDIT', id);
-      props.history.push({pathname: '/#', data: id});
+      // console.log('EDIT', id);
+      props.history.push({pathname: '/jobCategoryEdit', data: id});
   }
   
   const onClickRemove = (id)=> {
-      console.log('REMOVE', id.id );
-      deleteID.current = id;
-      // props.history.push({pathname: '/edit-User', data: {id}});
+      // console.log('REMOVE', id.job_category_id  );
+      deleteID.current = id.job_category_id;
       setshowConfirmDelete(true);
   }
 
@@ -111,19 +94,17 @@ const FoodCoupousPage = (props)=> {
 
       try {          
           
-        Axios.get(`${BASE_URL}food-coupons/all-food-coupons`, {
+        Axios.get(`${BASE_URL}job-category/all-job-category`, {
             
         }).then(response => {
             
             let users = response.data.data;
             let rows = users.map((item, index) => {return {
               sl_no: index+1,
-              post_title: item.title,
-              post_content: item.description ,
-              coupon_price: item.price,
-                quantity: item.quantity,
+              post_title: item.job_category_title,
+              
                
-                action: action(item.id , item)
+                action: action(item.job_category_id  , item)
             }});
             setRows(rows);
             //this.setState({userFname:response.data.data[0].first_name })
@@ -140,24 +121,24 @@ const FoodCoupousPage = (props)=> {
 
 
   const deleteUser = async (id) => {
-    
-  //   Axios.post(`${BASE_URL}users/userdelete`, {
-  //     id: id
-  // }).then(response => {
-  //   if(response.data.code==200){
-  //     showToast('Success', 'Delete Success'); 
-  //     this.props.history.replace('/userList');
+   
+    Axios.post(`${BASE_URL}job-category/jobcategorydelete`, {
+      id: id
+  }).then(response => {
+    if(response.data.code==200){
+      showToast('Success', 'Delete Success'); 
+      this.props.history.replace('/jobCategoryList');
 
       
-  // }else{
-  //   showToast('Warning', 'User already registered'); 
-  //   this.props.history.replace('/userList');
-  // }
+  }else{
+    showToast('Warning', 'Error'); 
+    this.props.history.replace('/jobCategoryList');
+  }
       
       
-  // }).catch(err =>{
-  //     console.log(err);
-  // })
+  }).catch(err =>{
+      console.log(err);
+  })
 
 }
    
@@ -167,7 +148,7 @@ const FoodCoupousPage = (props)=> {
                 <div className="page-content">
                     <Container fluid>
 
-                    <Breadcrumbs title="Food List" breadcrumbItems={breadcrumbItems}/>
+                    <Breadcrumbs title="Category List" breadcrumbItems={breadcrumbItems}/>
 
                     <Row>
                         <Col xs={12}>
@@ -188,5 +169,5 @@ const FoodCoupousPage = (props)=> {
 }
 
 
-export default withRouter(FoodCoupousPage);
+export default withRouter(JobCategoryPage);
             

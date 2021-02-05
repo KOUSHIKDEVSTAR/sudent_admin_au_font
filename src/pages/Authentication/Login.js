@@ -39,6 +39,7 @@ class Login extends Component {
             
             // 400=Incorrect Email and/or Password!
             if(response.data.code===200){
+                
                 showToast('Success', 'Login Success'); 
                 setDataToLocalStorage('logUserEmail',response.data.email)
                 setDataToLocalStorage('logUserId',response.data.id)
@@ -47,7 +48,8 @@ class Login extends Component {
                 this.props.history.replace('/dashboard');   
             }else{ 
                 showToast('Error', 'Incorrect Email and/or Password!'); 
-                this.props.history.replace('/login');
+                console.log(response);
+                //this.props.history.replace('/login');
             }
         })
         .catch(error =>{
@@ -126,7 +128,7 @@ class Login extends Component {
                                             </div>
 
                                             <div className="mt-5 text-center">
-                                                <p>Don't have an account ? <Link to="/register" className="font-weight-medium text-primary"> Register </Link> </p>
+                                                {/* <p>Don't have an account ? <Link to="/register" className="font-weight-medium text-primary"> Register </Link> </p> */}
                                                 <p>© 2020 Nazox. Crafted with <i className="mdi mdi-heart text-danger"></i> by Themesdesign</p>
                                             </div>
                                         </div>

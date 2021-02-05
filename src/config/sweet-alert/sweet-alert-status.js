@@ -3,11 +3,11 @@ import SweetAlert from "react-bootstrap-sweetalert";
 
 
 
-function SweetAlertConfirm(props) {
+function SweetAlertConfirmStatus(props) {
     return (
         // <div>
         <SweetAlert
-            title="Are you sure?"
+            title="Are you sure change status??"
             warning
             showCancel
             confirmBtnBsStyle="success"
@@ -22,4 +22,4 @@ function SweetAlertConfirm(props) {
     )
 }
 
-export default SweetAlertConfirm;
+export default SweetAlertConfirmStatus;
