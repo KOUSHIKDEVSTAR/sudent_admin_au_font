@@ -42,7 +42,7 @@ class EditJobCategoryPage extends Component {
 	}
     async componentDidMount() {
        
-        Axios.post(`${BASE_URL}job-category/job-categorydata`, {
+        Axios.post(`${BASE_URL}job-category-admin/job-categorydata`, {
             id: this.state.userdata.job_category_id
             
         }).then(response => {
@@ -67,7 +67,7 @@ class EditJobCategoryPage extends Component {
         
        
         
-        Axios.post(`${BASE_URL}job-category/job-categoryEdit`, {
+        Axios.post(`${BASE_URL}job-category-admin/job-categoryEdit`, {
             job_category_id: values.job_category_id,
             job_category_title: values.job_category_title
             

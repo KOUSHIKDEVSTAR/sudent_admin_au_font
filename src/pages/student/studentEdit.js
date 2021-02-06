@@ -42,7 +42,7 @@ class StudentEditPage extends Component {
 	}
     async componentDidMount() {
         
-        Axios.post(`${BASE_URL}student/userdata`, {
+        Axios.post(`${BASE_URL}student-admin/userdata`, {
             id: this.state.userdata.id
         }).then(response => {
             // console.log(response.data.data[0]);
@@ -69,7 +69,7 @@ class StudentEditPage extends Component {
         
        
         
-        Axios.post(`${BASE_URL}student/profileEdit`, {
+        Axios.post(`${BASE_URL}student-admin/profileEdit`, {
             email: values.email,
             address:values.address,
             first_name:values.first_name,

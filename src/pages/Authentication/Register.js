@@ -36,7 +36,7 @@ handleSubmit(event, values) {
     //     url:'localhost:9001/users/register',
     //     data:values
     // })
-    axios.post(`${BASE_URL}users/register`, {
+    axios.post(`${BASE_URL}users-admin/register`, {
         email: values.email,
         password:values.password,
         first_name:values.first_name,

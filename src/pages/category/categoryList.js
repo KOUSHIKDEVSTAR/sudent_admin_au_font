@@ -95,7 +95,7 @@ const CategoryPage = (props)=> {
 
       try {          
           
-        Axios.get(`${BASE_URL}category/all-category`, {
+        Axios.get(`${BASE_URL}category-admin//all-category`, {
             
         }).then(response => {
             
@@ -124,7 +124,7 @@ const CategoryPage = (props)=> {
   const deleteUser = async (id) => {
     // console.log('jhksfgjkjhkfds',id.id);
     
-    Axios.post(`${BASE_URL}category/categorydelete`, {
+    Axios.post(`${BASE_URL}category-admin//categorydelete`, {
       id: id.id
   }).then(response => {
     if(response.data.code==200){

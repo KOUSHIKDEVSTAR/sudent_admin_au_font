@@ -29,6 +29,9 @@ import addAccomodation from "../pages/accomodation/addAccomodation";
 import jobCategoryList from "../pages/jobCategory/jobCategoryList";
 import editJobCategory from "../pages/jobCategory/editJobCategory";
 import editCategory from "../pages/category/editCategory";
+import userView from "../pages/users/userView";
+import studentView from "../pages/student/studentView";
+
 
 
 
@@ -39,12 +42,14 @@ const authProtectedRoutes = [
 
 	{ path: "/dashboard", component: Dashboard },
 	{ path: "/userList", component: UserListPage },
+	{ path: "/userView", component: userView },
 	{ path: "/userProfile", component: ProfileView },
 	{ path: "/userEdit", component: userEdit },
 	{ path: "/addUsers", component: addUsers },
 	{ path: "/studentlist", component: studentList },
 	{ path: "/addStudent", component: addStudent },
 	{ path: "/studentEdit", component: studentEdit },
+	{ path: "/studentView", component: studentView },
 	{ path: "/foodCouponsList", component: foodCouponsList },
 	{ path: "/addFoodCoupons", component: addFoodCoupons },
 

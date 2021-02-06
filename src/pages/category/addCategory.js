@@ -48,7 +48,7 @@ const AddCategoryPage = (props)=> {
      const handleSubmit = async (event, values)=> {
         // console.log(values);
         var post_slug= slugify(values.post_title);
-        Axios.post(`${BASE_URL}category/addCategory`, {
+        Axios.post(`${BASE_URL}category-admin//addCategory`, {
             coupon_price: values.coupon_price,
             address:values.address,
             post_content:values.post_content,

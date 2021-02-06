@@ -48,7 +48,7 @@ const AddFoodCoupousPage = (props)=> {
      const handleSubmit = async (event, values)=> {
         console.log(values);
         var post_slug= slugify(values.post_title);
-        Axios.post(`${BASE_URL}food-coupons/addFoodCoupons`, {
+        Axios.post(`${BASE_URL}food-coupons-admin/addFoodCoupons`, {
             coupon_price: values.coupon_price,
             address:values.address,
             post_content:values.post_content,
@@ -95,15 +95,15 @@ const AddFoodCoupousPage = (props)=> {
                                     placeholder="Enter Food Coupons Title"
                                     type="text"
                                     errorMessage="Enter Food Coupons Title"
-                                    validate={{ required: { value: true }, maxLength: {value: 60} }}
+                                    validate={{ required: { value: true } }}
                                 />
                                 <Label>Food Coupons Tag Line</Label>
                                 <AvField
                                     name="coupon_tag_line"
                                     placeholder="Enter Food Coupons Tag Line"
                                     type="text"
-                                    errorMessage="Enter Food Coupons Tag Line"
-                                    validate={{ required: { value: true }, maxLength: {value: 60} }}
+                                    
+                                    
                                 />
                                 <Label>Food Coupons Price</Label>
                                 <AvField
@@ -111,7 +111,7 @@ const AddFoodCoupousPage = (props)=> {
                                     placeholder="Enter Food Coupons Price"
                                     type="text"
                                     errorMessage="Enter Food Coupons Price"
-                                    validate={{ required: { value: true }, maxLength: {value: 5} }}
+                                    validate={{ required: { value: true }}}
                                 />
 
                                 <Label>Description</Label>
@@ -120,7 +120,7 @@ const AddFoodCoupousPage = (props)=> {
                                     placeholder="Enter Description"
                                     type="textarea"
                                     errorMessage="Enter Description"
-                                    validate={{ required: { value: true }, maxLength: {value: 60} }}
+                                    validate={{ required: { value: true } }}
                                 />
 
                                 <FormGroup className="mb-0">

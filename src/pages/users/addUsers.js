@@ -40,7 +40,7 @@ class ProfieAddPage extends Component {
 		this.setState({ textcount: event.target.value.length });
 	}
     async componentDidMount() {
-        Axios.post(`${BASE_URL}users/userdata`, {
+        Axios.post(`${BASE_URL}users-admin/userdata`, {
             id: await getDataFromLocalStorage('logUserId')
         }).then(response => {
             // console.log(response.data.data[0]);
@@ -67,7 +67,7 @@ class ProfieAddPage extends Component {
         
         console.log(values);
         
-        Axios.post(`${BASE_URL}users/addUser`, {
+        Axios.post(`${BASE_URL}users-admin/addUser`, {
             email: values.email,
             address:values.address,
             password:values.password,

@@ -24,7 +24,7 @@ class ProfileMenu extends Component {
         
     }
     async componentDidMount() {
-        Axios.post(`${BASE_URL}users/userdata`, {
+        Axios.post(`${BASE_URL}users-admin/userdata`, {
             id: await getDataFromLocalStorage('logUserId')
         }).then(response => {
             // console.log(response.data.data[0].first_name);

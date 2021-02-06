@@ -42,7 +42,7 @@ class ProfileEditPage extends Component {
 	}
     async componentDidMount() {
         
-        Axios.post(`${BASE_URL}users/userdata`, {
+        Axios.post(`${BASE_URL}users-admin/userdata`, {
             id: this.state.userdata.id
         }).then(response => {
             // console.log(response.data.data[0]);
@@ -69,7 +69,7 @@ class ProfileEditPage extends Component {
         
     
         
-        Axios.post(`${BASE_URL}users/profileEdit`, {
+        Axios.post(`${BASE_URL}users-admin/profileEdit`, {
             email: values.email,
             address:values.address,
             first_name:values.first_name,

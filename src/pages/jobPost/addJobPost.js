@@ -55,7 +55,7 @@ const AddJobPostPage = (props)=> {
         //console.log(values);
         let UserId = '1';
         var job_post_slug= slugify(values.job_post_title);
-        Axios.post(`${BASE_URL}job-post/addJobPost`, {
+        Axios.post(`${BASE_URL}job-post-admin/addJobPost`, {
             job_post_title: values.job_post_title,
             author:UserId,
             job_post_content:values.job_post_content,
@@ -91,7 +91,7 @@ const AddJobPostPage = (props)=> {
 
         try {          
             
-          Axios.get(`${BASE_URL}job-category/all-job-category`, {
+          Axios.get(`${BASE_URL}job-category-admin/all-job-category`, {
               
           }).then(response => {
               
@@ -142,7 +142,7 @@ const AddJobPostPage = (props)=> {
                                     placeholder="Job Post Title"
                                     type="text"
                                     errorMessage="Job Post Title"
-                                    validate={{ required: { value: true }, maxLength: {value: 60} }}
+                                    validate={{ required: { value: true }}}
                                 />
 
 
@@ -153,7 +153,7 @@ const AddJobPostPage = (props)=> {
                                     placeholder="Enter Description"
                                     type="textarea"
                                     errorMessage="Enter Description"
-                                    validate={{ required: { value: true }, maxLength: {value: 260} }}
+                                    validate={{ required: { value: true } }}
                                 />
 
                                 <Label>Job Adress</Label>
@@ -162,7 +162,7 @@ const AddJobPostPage = (props)=> {
                                     placeholder="Enter job address"
                                     type="textarea"
                                     errorMessage="Enter job address"
-                                    validate={{ required: { value: true }, maxLength: {value: 160} }}
+                                    validate={{ required: { value: true } }}
                                 />
 
                                 <Label>Job Category</Label>
@@ -181,7 +181,7 @@ const AddJobPostPage = (props)=> {
                                     placeholder="Job Type"
                                     type="text"
                                     errorMessage="Job Type"
-                                    validate={{ required: { value: true }, maxLength: {value: 60} }}
+                                    
                                 />
                                 <Label>Job Tag</Label>
                                 <AvField
@@ -189,7 +189,7 @@ const AddJobPostPage = (props)=> {
                                     placeholder="Job Tag"
                                     type="text"
                                     errorMessage="Job Tag"
-                                    validate={{ required: { value: true }, maxLength: {value: 60} }}
+                                    
                                 />
                                 <Label>Salary Type</Label>
                                 <AvField
@@ -197,7 +197,7 @@ const AddJobPostPage = (props)=> {
                                     placeholder="Salary Type"
                                     type="text"
                                     errorMessage="Salary Type"
-                                    validate={{ required: { value: true }, maxLength: {value: 60} }}
+                                    validate={{ required: { value: true }}}
                                 />
                                 <Label>Salary Details</Label>
                                 <AvField
@@ -205,7 +205,7 @@ const AddJobPostPage = (props)=> {
                                     placeholder="Salary details"
                                     type="text"
                                     errorMessage="Salary details"
-                                    validate={{ required: { value: true }, maxLength: {value: 60} }}
+                                    validate={{ required: { value: true }}}
                                 />
                                 <FormGroup className="mb-0">
                                     <div>  

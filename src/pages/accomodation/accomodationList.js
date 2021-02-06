@@ -119,7 +119,7 @@ const AccomodationPage = (props)=> {
 
       try {          
           
-        Axios.get(`${BASE_URL}accomodation/all-accomodation`, {
+        Axios.get(`${BASE_URL}accomodation-admin/all-accomodation`, {
             
         }).then(response => {
             
@@ -150,7 +150,7 @@ const AccomodationPage = (props)=> {
 
   const deleteUser = async (id) => {
     
-  //   Axios.post(`${BASE_URL}users/userdelete`, {
+  //   Axios.post(`${BASE_URL}users-admin/userdelete`, {
   //     id: id
   // }).then(response => {
   //   if(response.data.code==200){

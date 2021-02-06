@@ -102,7 +102,7 @@ const JobPostPage = (props)=> {
 
       try {
 
-        Axios.get(`${BASE_URL}job-post/all-job-post`, {
+        Axios.get(`${BASE_URL}job-post-admin/all-job-post`, {
 
         }).then(response => {
 
@@ -132,7 +132,7 @@ const JobPostPage = (props)=> {
 
   const deleteUser = async (id) => {
 
-  //   Axios.post(`${BASE_URL}users/userdelete`, {
+  //   Axios.post(`${BASE_URL}users-admin/userdelete`, {
   //     id: id
   // }).then(response => {
   //   if(response.data.code==200){

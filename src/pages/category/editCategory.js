@@ -50,7 +50,7 @@ const EditCategoryPage = (props)=> {
      const handleSubmit = async (event, values)=> {
         // console.log(values);
         
-        Axios.post(`${BASE_URL}category/categoryEdit`, {
+        Axios.post(`${BASE_URL}category-admin//categoryEdit`, {
             title: values.title,
             id:values.id,
             

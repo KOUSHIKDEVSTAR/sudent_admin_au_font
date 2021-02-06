@@ -40,7 +40,7 @@ class StudentAddPage extends Component {
 		this.setState({ textcount: event.target.value.length });
 	}
     async componentDidMount() {
-        Axios.post(`${BASE_URL}users/userdata`, {
+        Axios.post(`${BASE_URL}users-admin/userdata`, {
             id: await getDataFromLocalStorage('logUserId')
         }).then(response => {
             // console.log(response.data.data[0]);
@@ -67,7 +67,7 @@ class StudentAddPage extends Component {
         
         console.log(values);
         
-        Axios.post(`${BASE_URL}student/addStudent`, {
+        Axios.post(`${BASE_URL}student-admin/addStudent`, {
             email: values.email,
             address:values.address,
             password:values.password,

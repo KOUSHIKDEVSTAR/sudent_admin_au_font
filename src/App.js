@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Switch, BrowserRouter as Router } from "react-router-dom";
+import { Switch, BrowserRouter as Router, HashRouter } from "react-router-dom";
 import { connect } from "react-redux";
 
 // Import Routes
@@ -66,7 +66,7 @@ class App extends Component {
 
 		return (
 			<React.Fragment>
-				<Router>
+				<HashRouter>
 					<Switch>
 						{publicRoutes.map((route, idx) => (
 							<AppRoute
@@ -88,7 +88,7 @@ class App extends Component {
 							/>
 						))}
 					</Switch>
-				</Router>
+				</HashRouter>
 			</React.Fragment>
 		);
 	}

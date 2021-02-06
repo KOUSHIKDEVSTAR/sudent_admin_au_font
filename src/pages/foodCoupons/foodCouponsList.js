@@ -111,7 +111,7 @@ const FoodCoupousPage = (props)=> {
 
       try {          
           
-        Axios.get(`${BASE_URL}food-coupons/all-food-coupons`, {
+        Axios.get(`${BASE_URL}food-coupons-admin/all-food-coupons`, {
             
         }).then(response => {
             
@@ -141,7 +141,7 @@ const FoodCoupousPage = (props)=> {
 
   const deleteUser = async (id) => {
     
-  //   Axios.post(`${BASE_URL}users/userdelete`, {
+  //   Axios.post(`${BASE_URL}users-admin/userdelete`, {
   //     id: id
   // }).then(response => {
   //   if(response.data.code==200){

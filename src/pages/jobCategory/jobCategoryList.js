@@ -94,7 +94,7 @@ const JobCategoryPage = (props)=> {
 
       try {          
           
-        Axios.get(`${BASE_URL}job-category/all-job-category`, {
+        Axios.get(`${BASE_URL}job-category-admin/all-job-category`, {
             
         }).then(response => {
             
@@ -122,7 +122,7 @@ const JobCategoryPage = (props)=> {
 
   const deleteUser = async (id) => {
    
-    Axios.post(`${BASE_URL}job-category/jobcategorydelete`, {
+    Axios.post(`${BASE_URL}job-category-admin/jobcategorydelete`, {
       id: id
   }).then(response => {
     if(response.data.code==200){
