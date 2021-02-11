@@ -31,6 +31,9 @@ import editJobCategory from "../pages/jobCategory/editJobCategory";
 import editCategory from "../pages/category/editCategory";
 import userView from "../pages/users/userView";
 import studentView from "../pages/student/studentView";
+import foodView from "../pages/foodCoupons/foodView";
+import jobView from "../pages/jobPost/jobView";
+import accomodationView from "../pages/accomodation/accomodationView";
 
 
 
@@ -52,9 +55,12 @@ const authProtectedRoutes = [
 	{ path: "/studentView", component: studentView },
 	{ path: "/foodCouponsList", component: foodCouponsList },
 	{ path: "/addFoodCoupons", component: addFoodCoupons },
+	{ path: "/foodView", component: foodView },
+	
 
 	{ path: "/addJobPost", component: addJobPost },
 	{ path: "/jobPostList", component: jobPostList },
+	{ path: "/jobView", component: jobView },
 	{ path: "/jobCategoryList", component: jobCategoryList },
 	{ path: "/jobCategoryEdit", component: editJobCategory },
 
@@ -64,6 +70,7 @@ const authProtectedRoutes = [
 	
 	{ path: "/accomodationList", component: accomodationList },
 	{ path: "/addAccomodation", component: addAccomodation },
+	{ path: "/accomodationView", component: accomodationView },
 	
 	// this route should be at the end of all other routes
 	{ path: "/", exact: true, component: () => <Redirect to="/login" /> }

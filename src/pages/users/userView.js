@@ -20,7 +20,7 @@ class ProfileViewPage extends Component {
         this.state = {
             breadcrumbItems : [
                 { title : SITE_NAME, link : "#" },
-                { title : "User Profile", link : "#" },
+                { title : "Vendor Profile", link : "#" },
             ],
             customchk: true,
             toggleSwitch: true,
@@ -73,14 +73,14 @@ class ProfileViewPage extends Component {
                 <div className="page-content">
                     <Container fluid>
 
-                        <Breadcrumbs title="User Profile" breadcrumbItems={this.state.breadcrumbItems} />
+                        <Breadcrumbs title="Vendor Profile" breadcrumbItems={this.state.breadcrumbItems} />
 
                         <Row>
                             
                             <Col lg={12}>
                             <Card>
                                     <CardBody>
-                                        <h4 className="card-title">User Profile</h4>
+                                        <h4 className="card-title">Vendor Profile</h4>
                                         
                                         
                                         <div className="table-responsive">
@@ -89,43 +89,43 @@ class ProfileViewPage extends Component {
                                                 
                                                 <tbody>
                                                     <tr>
-                                                        <th scope="row">1</th>
+                                                        
                                                         <td>Name</td>
                                                         <td>{this.state.fname} {this.state.lname}</td>
                                                         
                                                     </tr>
                                                     <tr>
-                                                        <th scope="row">1</th>
+                                                        
                                                         <td>Email</td>
                                                         <td>{this.state.email}</td>
                                                         
                                                     </tr>
                                                     <tr>
-                                                        <th scope="row">1</th>
+                                                        
                                                         <td>Phone</td>
                                                         <td>{this.state.phone}</td>
                                                         
                                                     </tr>
                                                     <tr>
-                                                        <th scope="row">1</th>
+                                                        
                                                         <td>Company Name</td>
                                                         <td>{this.state.company_name}</td>
                                                         
                                                     </tr>
                                                     <tr>
-                                                        <th scope="row">1</th>
+                                                        
                                                         <td>Company Address</td>
                                                         <td>{this.state.company_address}</td>
                                                         
                                                     </tr>
                                                     <tr>
-                                                        <th scope="row">1</th>
+                                                        
                                                         <td>Company About</td>
                                                         <td>{this.state.company_about}</td>
                                                         
                                                     </tr>
                                                     <tr>
-                                                        <th scope="row">1</th>
+                                                        
                                                         <td>Created at</td>
                                                         <td>{this.state.created_at}</td>
                                                         

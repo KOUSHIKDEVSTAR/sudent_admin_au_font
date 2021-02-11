@@ -144,7 +144,7 @@ class SidebarContent extends Component {
                                     <span className="ml-1">{this.props.t('Food coupons')}</span>
                                 </Link>
                                 <ul className="sub-menu" aria-expanded="false">
-                                    <li><Link to="addFoodCoupons">{this.props.t('Food coupons Add')}</Link></li>
+                                    {/* <li><Link to="addFoodCoupons">{this.props.t('Food coupons Add')}</Link></li> */}
                                     <li><Link to="foodCouponsList">{this.props.t('Food coupons List')}</Link></li>
                                     
                                    
@@ -159,27 +159,27 @@ class SidebarContent extends Component {
                                     <span className="ml-1">{this.props.t('Post A Job')}</span>
                                 </Link>
                                 <ul className="sub-menu" aria-expanded="false">
-                                    <li><Link to="addJobPost">{this.props.t('Job Add')}</Link></li>
+                                    {/* <li><Link to="addJobPost">{this.props.t('Job Add')}</Link></li> */}
                                     <li><Link to="jobPostList">{this.props.t('Job List')}</Link></li>
-                                    <li><Link to="jobCategoryList">{this.props.t('Job Category List')}</Link></li>
+                                    {/* <li><Link to="jobCategoryList">{this.props.t('Job Category List')}</Link></li> */}
                                     
                                    
                                     
                                 </ul>
                             </li>
-                            <li>
+                            {/* <li>
                                 <Link to="/#" className="has-arrow waves-effect">
                                     <i className="ri-walk-line"></i>
                                     <span className="ml-1">{this.props.t('Category')}</span>
                                 </Link>
                                 <ul className="sub-menu" aria-expanded="false">
-                                    {/* <li><Link to="addCategory">{this.props.t('Student Add')}</Link></li> */}
+                                    
                                     <li><Link to="categoryList">{this.props.t('Category List')}</Link></li>
                                     
                                    
                                     
                                 </ul>
-                            </li>
+                            </li> */}
                             <li>
                                 <Link to="/#" className="has-arrow waves-effect">
                                     <i className="ri-walk-line"></i>

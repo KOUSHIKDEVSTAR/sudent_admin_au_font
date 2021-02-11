@@ -74,6 +74,11 @@ const AddFoodCoupousPage = (props)=> {
         })
         
     }
+
+
+    const onselectImage = (e)=>{
+        console.log(e.target.files);
+    }
    
 
         return (
@@ -122,7 +127,14 @@ const AddFoodCoupousPage = (props)=> {
                                     errorMessage="Enter Description"
                                     validate={{ required: { value: true } }}
                                 />
-
+                                <CardBody>
+                                        <h4 className="card-title">File browser</h4>
+                                        <p className="card-title-desc">The file input is the most gnarly of the bunch and requires additional JavaScript if you’d like to hook them up with functional <em>Choose file…</em> and selected file name text.</p>
+                                        <div className="custom-file">
+                                            <CustomInput type="file" className="custom-file-input" id="customFile" onChange={(e)=>{onselectImage(e)}} multiple/>
+                                            <Label className="custom-file-label" htmlFor="customFile">Choose file</Label>
+                                        </div>
+                                    </CardBody>
                                 <FormGroup className="mb-0">
                                     <div>
                                         <Button type="submit" color="primary" className="mr-1">

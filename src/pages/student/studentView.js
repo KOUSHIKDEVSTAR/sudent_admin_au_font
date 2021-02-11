@@ -20,7 +20,7 @@ class StudentViewPage extends Component {
         this.state = {
             breadcrumbItems : [
                 { title : SITE_NAME, link : "#" },
-                { title : "User Profile", link : "#" },
+                { title : "Student Profile", link : "#" },
             ],
             customchk: true,
             toggleSwitch: true,
@@ -82,14 +82,14 @@ class StudentViewPage extends Component {
                 <div className="page-content">
                     <Container fluid>
 
-                        <Breadcrumbs title="User Profile" breadcrumbItems={this.state.breadcrumbItems} />
+                        <Breadcrumbs title="Student Profile" breadcrumbItems={this.state.breadcrumbItems} />
 
                         <Row>
                             
                             <Col lg={12}>
                             <Card>
                                     <CardBody>
-                                        <h4 className="card-title">User Profile</h4>
+                                        <h4 className="card-title">Student Profile</h4>
                                         
                                         
                                         <div className="table-responsive">

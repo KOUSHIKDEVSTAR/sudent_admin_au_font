@@ -37,17 +37,29 @@ const JobPostPage = (props)=> {
       },
 
       {
-        label: "Status",
-        field: "status",
+        label: "Job Location",
+        field: "job_address",
         sort: "asc",
         width: 100
       },
-      // {
-      //   label: "Action",
-      //   field: "action",
-      //   sort: "asc",
-      //   width: 100
-      // }
+      {
+        label: "Job Type",
+        field: "job_type",
+        sort: "asc",
+        width: 100
+      },
+      {
+        label: "Job created at",
+        field: "created_at",
+        sort: "asc",
+        width: 100
+      },
+      {
+        label: "Action",
+        field: "action",
+        sort: "asc",
+        width: 100
+      }
     ]);
     const [rows, setRows] = useState([]);
     // const [allUser, setAllUser] = useState([]);
@@ -56,7 +68,7 @@ const JobPostPage = (props)=> {
 
     const [breadcrumbItems, setbreadcrumbItems] = useState([
         { title : SITE_NAME, link : "#" },
-        { title : "Student List", link : "#" },
+        { title : "Job List", link : "#" },
     ])
 
     useEffect(()=>{
@@ -68,14 +80,14 @@ const JobPostPage = (props)=> {
             console.log('sdfsdf fdsf  ', err);
         })
 
-        getAllUsers();
+        getAllData();
     }, []);
 
 
 
     const onClickEdit = (id)=> {
       console.log('EDIT', id);
-      props.history.push({pathname: '/#', data: id});
+      props.history.push({pathname: '/jobView', data: id});
   }
 
   const onClickRemove = (id)=> {
@@ -95,10 +107,10 @@ const JobPostPage = (props)=> {
     setshowConfirmDelete(false);
   }
 
-  const action = (key, job_post_id  )=>{return [<i className="fa fa-edit" key={key} onClick={()=>{onClickEdit(job_post_id  )}} style={{fontSize: 18}}></i>, '     ', '     ', <i className="fa fa-trash" key={key+key} style={{fontSize: 18}} onClick={()=> {onClickRemove(job_post_id  )}}></i>]};
+  const action = (key, job_post_id  )=>{return [<i className="fa fa-eye" key={key} onClick={()=>{onClickEdit(job_post_id  )}} style={{fontSize: 18}}></i>, '     ', '     ', <i className="fa fa-trash" key={key+key} style={{fontSize: 18}} onClick={()=> {onClickRemove(job_post_id  )}}></i>]};
 
     // getting all User
-    const getAllUsers = async () => {
+    const getAllData = async () => {
 
       try {
 
@@ -112,7 +124,9 @@ const JobPostPage = (props)=> {
               job_post_title: item.job_post_title,
               job_post_content: item.job_post_content,
 
-                status: item.status,
+                job_address: item.job_address,
+                job_type: item.job_type,
+                created_at: item.created_at.substring(0,10),
 
                 action: action(item.job_post_id  , item)
             }});
@@ -131,24 +145,23 @@ const JobPostPage = (props)=> {
 
 
   const deleteUser = async (id) => {
+    
+    Axios.post(`${BASE_URL}job-post-admin/dataDelete`, {
+      job_post_id : id.job_post_id
+  }).then(response => {
+    if(response.data.code==200){
+      showToast('Success', 'Delete Success');
+      getAllData();
+      this.props.history.replace('/jobPostList');
+  }else{
+    showToast('Warning', 'Delete Error');
+    this.props.history.replace('/jobPostList');
+  }
 
-  //   Axios.post(`${BASE_URL}users-admin/userdelete`, {
-  //     id: id
-  // }).then(response => {
-  //   if(response.data.code==200){
-  //     showToast('Success', 'Delete Success');
-  //     this.props.history.replace('/userList');
 
-
-  // }else{
-  //   showToast('Warning', 'User already registered');
-  //   this.props.history.replace('/userList');
-  // }
-
-
-  // }).catch(err =>{
-  //     console.log(err);
-  // })
+  }).catch(err =>{
+      console.log(err);
+  })
 
 }
 
@@ -158,7 +171,7 @@ const JobPostPage = (props)=> {
                 <div className="page-content">
                     <Container fluid>
 
-                    <Breadcrumbs title="Vendor List" breadcrumbItems={breadcrumbItems}/>
+                    <Breadcrumbs title="Job List" breadcrumbItems={breadcrumbItems}/>
 
                     <Row>
                         <Col xs={12}>

@@ -8,7 +8,7 @@ import "../../datatables.scss";
 import Breadcrumbs from '../../components/Common/Breadcrumb';
 import SweetAlertConfirm from '../../config/sweet-alert/sweet-alert';
 import Axios from 'axios';
-import { BASE_URL, SITE_NAME } from '../../config/static';
+import { BASE_URL, SITE_NAME,BASE_URL_IMG } from '../../config/static';
 import { showToast } from '../../config/toastr/toast';
 import { checkUserAuthenticity } from '../../helpers/checkUserAuthenticity/checkAuthenticity';
 
@@ -28,6 +28,12 @@ const AccomodationPage = (props)=> {
         sort: "asc",
         width: 200
       },
+      // {
+      //   label: "Image",
+      //   field: "accomodation_post_images",
+      //   sort: "asc",
+      //   width: 150
+      // },
       {
         label: "Title",
         field: "post_title",
@@ -85,14 +91,14 @@ const AccomodationPage = (props)=> {
             console.log('sdfsdf fdsf  ', err);
         })
 
-        getAllUsers();
+        getAllData();
     }, []);
 
     
 
     const onClickEdit = (id)=> {
       console.log('EDIT', id);
-      props.history.push({pathname: '/#', data: id});
+      props.history.push({pathname: '/accomodationView', data: id});
   }
   
   const onClickRemove = (id)=> {
@@ -112,10 +118,10 @@ const AccomodationPage = (props)=> {
     setshowConfirmDelete(false);
   }
   
-  const action = (key, id )=>{return [<i className="fa fa-edit" key={key} onClick={()=>{onClickEdit(id )}} style={{fontSize: 18}}></i>, '     ', '     ', <i className="fa fa-trash" key={key+key} style={{fontSize: 18}} onClick={()=> {onClickRemove(id )}}></i>]};
+  const action = (key, id )=>{return [<i className="fa fa-eye" key={key} onClick={()=>{onClickEdit(id )}} style={{fontSize: 18}}></i>, '     ', '     ', <i className="fa fa-trash" key={key+key} style={{fontSize: 18}} onClick={()=> {onClickRemove(id )}}></i>]};
 
     // getting all User
-    const getAllUsers = async () => {
+    const getAllData = async () => {
 
       try {          
           
@@ -125,14 +131,16 @@ const AccomodationPage = (props)=> {
             
             let users = response.data.data;
             let rows = users.map((item, index) => {return {
+              
               sl_no: index+1,
+              // accomodation_post_images:BASE_URL_IMG+'/images/'+ item.accomodation_post_images,
               post_title: item.title,
               post_short_content: item.post_short_content,
               address: item.address,
               accomodation_type: item.accomodation_type,
               accomodation_price: item.accomodation_price,
 
-              //   action: action(item.id , item)
+                action: action(item.accomodation_id  , item)
             }});
             setRows(rows);
             //this.setState({userFname:response.data.data[0].first_name })
@@ -150,23 +158,24 @@ const AccomodationPage = (props)=> {
 
   const deleteUser = async (id) => {
     
-  //   Axios.post(`${BASE_URL}users-admin/userdelete`, {
-  //     id: id
-  // }).then(response => {
-  //   if(response.data.code==200){
-  //     showToast('Success', 'Delete Success'); 
-  //     this.props.history.replace('/userList');
+    Axios.post(`${BASE_URL}accomodation-admin/accomodationdelete`, {
+      id: id.accomodation_id 
+  }).then(response => {
+    if(response.data.code==200){
+      showToast('Success', 'Delete Success'); 
+      getAllData();
+      this.props.history.replace('/accomodationList');
 
       
-  // }else{
-  //   showToast('Warning', 'User already registered'); 
-  //   this.props.history.replace('/userList');
-  // }
+  }else{
+    showToast('Warning', 'Delete Error'); 
+    this.props.history.replace('/accomodationList');
+  }
       
       
-  // }).catch(err =>{
-  //     console.log(err);
-  // })
+  }).catch(err =>{
+      console.log(err);
+  })
 
 }
    
