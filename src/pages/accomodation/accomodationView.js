@@ -27,7 +27,7 @@ const optionGroup = (opt=[])=>{ return [
 //-------------------------------------------------------------
 //  edit category component
 //-------------------------------------------------------------
-const FoodViewPage = (props)=> {
+const AccomodationViewPage = (props)=> {
 
     let history = useHistory();
     const [state, setState] = useState({
@@ -39,16 +39,18 @@ const FoodViewPage = (props)=> {
     const [title, setTitle] = useState(props.location.data.title);
     const [address, setaddress] = useState(props.location.data.address);
     const [post_content, setpost_content] = useState(props.location.data.post_content);
-    const [restaurants_name, setrestaurants_name] = useState(props.location.data.restaurants_name);
-    const [discount, setdiscount] = useState(props.location.data.discount);
-    const [discount_code, setdiscount_code] = useState(props.location.data.discount_code);
-    const [closes_date, setcloses_date] = useState(props.location.data.closes_date);
+    const [accomodation_price, setaccomodation_price] = useState(props.location.data.accomodation_price);
+    const [accomodation_type, setaccomodation_type] = useState(props.location.data.accomodation_type);
+    const [parking_area, setparking_area] = useState(props.location.data.parking_area);
+    const [bathroom, setbathroom] = useState(props.location.data.bathroom);
+    const [bedroom, setbedroom] = useState(props.location.data.bedroom);
+    const [floor_area, setfloor_area] = useState(props.location.data.floor_area);
     
 
     // breadcrum
     const [breadcrumbItems, setbreadcrumbItems] = useState([
         { title : SITE_NAME, link : "#" },
-        { title : "Food View", link : "#" },
+        { title : "Accomodation View", link : "#" },
     ])
 
     useEffect(() => {
@@ -74,13 +76,13 @@ const FoodViewPage = (props)=> {
             <div className="page-content">
                 <Container fluid>
 
-                <Breadcrumbs title="Food View" breadcrumbItems={breadcrumbItems}/>
+                <Breadcrumbs title="Accomodation View" breadcrumbItems={breadcrumbItems}/>
 
                 <Row>
                     <Col xs={12}>
                     <Card>
                                     <CardBody>
-                                        <h4 className="card-title">Food View</h4>
+                                        <h4 className="card-title">Accomodation View</h4>
                                         
                                         
                                         <div className="table-responsive">
@@ -101,20 +103,28 @@ const FoodViewPage = (props)=> {
                                                         <td>{post_content}</td>
                                                     </tr>
                                                     <tr>
-                                                        <td>Restaurants name</td>
-                                                        <td>{restaurants_name}</td>
+                                                        <td>Price</td>
+                                                        <td>{accomodation_price}</td>
                                                     </tr>
                                                     <tr>
-                                                        <td>Discount</td>
-                                                        <td>{discount}%</td>
+                                                        <td>Type</td>
+                                                        <td>{accomodation_type}%</td>
                                                     </tr>
                                                     <tr>
-                                                        <td>Discount code</td>
-                                                        <td>{discount_code}</td>
+                                                        <td>Parking</td>
+                                                        <td>{parking_area}</td>
                                                     </tr>
                                                     <tr>
-                                                        <td>Closes date</td>
-                                                        <td>{closes_date}</td>
+                                                        <td>Bathroom</td>
+                                                        <td>{bathroom}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Bed Room</td>
+                                                        <td>{bedroom}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Floor Area</td>
+                                                        <td>{floor_area}</td>
                                                     </tr>
                                                     
 
@@ -137,4 +147,4 @@ const FoodViewPage = (props)=> {
     }
 
 
-export default withRouter(FoodViewPage);
+export default withRouter(AccomodationViewPage);
